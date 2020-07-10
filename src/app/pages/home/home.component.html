@@ -1,0 +1,57 @@
+<ng-container *ngIf="personas">
+  <mat-table [dataSource]="personas" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="rut">
+      <mat-header-cell *matHeaderCellDef> Rut </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.rut}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.last_name}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef> Edad </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef> Dirección </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="addPersona(element)" title="Agregar">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="editPersona(element)" title="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deletePersona(element)" title="Eliminar">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</ng-container>

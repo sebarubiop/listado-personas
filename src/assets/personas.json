@@ -1,0 +1,37 @@
+[
+  {
+    "rut": "16476473-7",
+    "name": "Sebastian",
+    "last_name": "Rubio",
+    "age": 33,
+    "address": "Garcia Hurtado de Mendoza 7958, La Florida"
+  },
+  {
+    "rut": "16557031-6",
+    "name": "Paloma",
+    "last_name": "Ferrero",
+    "age": 33,
+    "address": "Luis Martinez 187, La Florida"
+  },
+  {
+    "rut": "7043410-5",
+    "name": "Ines",
+    "last_name": "Palominos",
+    "age": 65,
+    "address": "Walker Martinez 1244, La Florida"
+  },
+  {
+    "rut": "19004006-9",
+    "name": "Yannina",
+    "last_name": "Rubio",
+    "age": 40,
+    "address": "Lia Aguirre 133, La Florida"
+  },
+  {
+    "rut": "12345678-9",
+    "name": "Valeria",
+    "last_name": "Rubio",
+    "age": 27,
+    "address": "Las Camelias 3669, Puente Alto"
+  }
+]
