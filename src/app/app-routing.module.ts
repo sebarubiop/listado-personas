@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
   },
   {
-    path: 'new/:id',
+    path: 'add/:id',
     loadChildren: () => import('./pages/admin-persona/admin-persona.module').then(m => m.AdminPersonaModule),
   },
   {

@@ -1,4 +1,5 @@
 export interface Persona {
+  _id: string
   id: number
   rut: string
   name: string

@@ -25,20 +25,23 @@ export class HomeComponent implements OnInit {
   }
 
   async getPersonas() {
-    this.personas = await this.personasService.getPersonas().toPromise()
-    if (this.personas) {
-      console.log(this.personas)
+    const response = await this.personasService.getPersonas().toPromise()
+    if (response.success) {
+      this.personas = response.value
+    } else {
+      this.isError = true
+      console.log(response.message)
     }
   }
 
   addPersona() {
     // console.log(persona)
-    this.router.navigate(['/new', 'new'])
+    this.router.navigate(['/add', 'new'])
   }
 
   editPersona(persona: Persona) {
     console.log(persona)
-    this.router.navigate(['/edit', persona.id])
+    this.router.navigate(['/edit', persona._id])
   }
 
   deletePersona(persona: Persona) {
