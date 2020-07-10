@@ -1,0 +1,20 @@
+
+.form-area {
+  min-width: 200px;
+  width: 100%;
+}
+
+.field-area {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inside-btn {
+  display: flex;
+  align-items: center;
+}

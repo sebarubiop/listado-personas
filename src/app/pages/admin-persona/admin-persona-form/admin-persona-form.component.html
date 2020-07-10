@@ -1,0 +1,63 @@
+<form [formGroup]="personaForm" (submit)="submitPersona()" class="form-area">
+
+  <mat-form-field class="field-area">
+    <mat-label>Rut</mat-label>
+    <input matInput formControlName="rutCtrl" placeholder="11111111-1" required>
+    <mat-error>
+      Rut requerido
+    </mat-error>
+    <mat-error>
+      Rut inválido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="field-area">
+    <mat-label>Nombre</mat-label>
+    <input matInput #name formControlName="nameCtrl" placeholder="" maxlength="50" required>
+    <mat-hint align="end"> {{name.value.length}} / 50</mat-hint>
+    <mat-error>
+      Nombre requerido
+    </mat-error>
+    <mat-error>
+      Máx. caracteres: 50
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="field-area">
+    <mat-label>Apellido</mat-label>
+    <input matInput #lastname formControlName="lastnameCtrl" placeholder="" maxlength="60" required>
+    <mat-hint align="end"> {{lastname.value.length}} / 60</mat-hint>
+    <mat-error>
+      Apellido requerido
+    </mat-error>
+    <mat-error>
+      Máx. caracteres: 60
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="field-area">
+    <mat-label>Edad</mat-label>
+    <input matInput formControlName="ageCtrl" placeholder="">
+    <mat-error>
+      Debe ser mayor a 18 años
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="field-area">
+    <mat-label>Dirección</mat-label>
+    <textarea matInput #descripcion formControlName="addressCtrl" maxlength="400" matTextareaAutosize
+      matAutosizeMinRows="3" matAutosizeMaxRows="6"></textarea>
+    <mat-hint align="end"> {{descripcion.value.length}} / 400</mat-hint>
+    <mat-error>Máx. caracteres: 400</mat-error>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-raised-button (click)="backClicked()">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="!personaForm.valid || processing">
+      <div class="inside-btn">
+        {{isAdd ? 'Agregar' : isEdit ? 'Editar' : 'Error...'}}
+        <mat-spinner *ngIf="processing" [diameter]="20"> </mat-spinner>
+      </div>
+    </button>
+  </div>
+</form>
