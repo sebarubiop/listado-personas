@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from "@angular/router";
+import { Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { Location } from '@angular/common';
-import { PersonasService } from 'src/app/services/personas.service';
 import { Persona } from 'src/app/interfaces/persona';
+import { ValidRut } from './customvalidator.validator'
 
 @Component({
   selector: 'app-admin-persona-form',
@@ -19,13 +19,12 @@ export class AdminPersonaFormComponent implements OnInit {
   isEdit: boolean
   processing: boolean
   isError: boolean
+  rutInvalid: boolean
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private _location: Location,
     private formBuilder: FormBuilder,
-    private personasService: PersonasService,
   ) {
 
   }
@@ -35,13 +34,14 @@ export class AdminPersonaFormComponent implements OnInit {
     this.isAdd = urlArray[0].includes('add')
     this.isEdit = urlArray[0].includes('edit')
     this.createForm(this.persona)
+    // console.log(this.rutValidator({value:'16476473-6'}))
   }
 
   private createForm(data: Persona) {
     this.personaForm = this.formBuilder.group({
-      rutCtrl: [data?.rut,
-        [Validators.required,
-        ]],
+      rutCtrl: [data?.rut, [
+        Validators.required
+      ]],
       nameCtrl: [data?.name, Validators.compose([
         Validators.required,
         Validators.maxLength(50),
@@ -55,6 +55,10 @@ export class AdminPersonaFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(400),
       ])],
+
+    },
+    {
+      validator: ValidRut("rutCtrl")
     })
   }
 
