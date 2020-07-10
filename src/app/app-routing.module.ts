@@ -14,6 +14,14 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
   },
+  {
+    path: 'new/:id',
+    loadChildren: () => import('./pages/admin-persona/admin-persona.module').then(m => m.AdminPersonaModule),
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: () => import('./pages/admin-persona/admin-persona.module').then(m => m.AdminPersonaModule),
+  },
   { path: '**', component: ErrorPageComponent } // "Catch-All" Route
 ];
 

@@ -1,3 +1,8 @@
+<h1>Administrador de Personas</h1>
+<button mat-flat-button color="primary" (click)="addPersona()" title="Agregar">
+  <mat-icon>add</mat-icon>
+  Agregar Persona
+</button>
 <ng-container *ngIf="personas">
   <mat-table [dataSource]="personas" class="mat-elevation-z8">
     <!-- Position Column -->
@@ -39,9 +44,6 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="addPersona(element)" title="Agregar">
-          <mat-icon>add</mat-icon>
-        </button>
         <button mat-icon-button color="accent" (click)="editPersona(element)" title="Editar">
           <mat-icon>edit</mat-icon>
         </button>
@@ -54,4 +56,10 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+</ng-container>
+<ng-container *ngIf="!personas && !isError">
+  <mat-spinner></mat-spinner>
+</ng-container>
+<ng-container *ngIf="!personas && isError">
+  Tenemos problemas para cargar el listado de personas. Intenta más tarde.
 </ng-container>

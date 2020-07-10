@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "rut": "16476473-7",
     "name": "Sebastian",
     "last_name": "Rubio",
@@ -7,6 +8,7 @@
     "address": "Garcia Hurtado de Mendoza 7958, La Florida"
   },
   {
+    "id": 2,
     "rut": "16557031-6",
     "name": "Paloma",
     "last_name": "Ferrero",
@@ -14,6 +16,7 @@
     "address": "Luis Martinez 187, La Florida"
   },
   {
+    "id": 3,
     "rut": "7043410-5",
     "name": "Ines",
     "last_name": "Palominos",
@@ -21,6 +24,7 @@
     "address": "Walker Martinez 1244, La Florida"
   },
   {
+    "id": 4,
     "rut": "19004006-9",
     "name": "Yannina",
     "last_name": "Rubio",
@@ -28,6 +32,7 @@
     "address": "Lia Aguirre 133, La Florida"
   },
   {
+    "id": 5,
     "rut": "12345678-9",
     "name": "Valeria",
     "last_name": "Rubio",
