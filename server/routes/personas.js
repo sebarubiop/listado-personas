@@ -3,8 +3,10 @@ const router = express.Router();
 const mongoose  = require('mongoose');
 const Persona = require('../models/persona')
 
-const MONGODB_HOST = 'localhost'
-const MONGODB_PORT = '27017'
+// const MONGODB_HOST = 'localhost'
+// const MONGODB_PORT = '27017'
+const MONGODB_HOST = 'tech-lead:tech-lead-123@ds263048.mlab.com'
+const MONGODB_PORT = '63048'
 const MONGODB_NAME = 'tech-lead'
 
 mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_NAME}`)

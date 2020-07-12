@@ -3,7 +3,7 @@
   <mat-icon>add</mat-icon>
   Agregar Persona
 </button>
-<ng-container *ngIf="personas">
+<ng-container *ngIf="personas?.length > 0">
   <mat-table [dataSource]="personas">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
@@ -57,9 +57,12 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </ng-container>
+<ng-container *ngIf="personas?.length === 0">
+  <h2>Aun no existen personas. Agregue una nueva persona con el bóton de arriba.</h2>
+</ng-container>
 <ng-container *ngIf="!personas && !isError">
   <mat-spinner></mat-spinner>
 </ng-container>
 <ng-container *ngIf="!personas && isError">
-  Tenemos problemas para cargar el listado de personas. Intenta más tarde.
+  <h2>Tenemos problemas para cargar el listado de personas. Intenta más tarde.</h2>
 </ng-container>
