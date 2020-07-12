@@ -2,7 +2,7 @@
 
   <mat-form-field class="field-area">
     <mat-label>Rut</mat-label>
-    <input matInput formControlName="rutCtrl" placeholder="11111111-1" required>
+    <input matInput formControlName="rutCtrl" placeholder="Ej. 11111111-1" required>
     <mat-error *ngIf="personaForm.controls.rutCtrl.errors?.required && personaForm.controls.rutCtrl.dirty">
       Rut requerido
     </mat-error>
@@ -37,8 +37,8 @@
 
   <mat-form-field class="field-area">
     <mat-label>Edad</mat-label>
-    <input matInput formControlName="ageCtrl" placeholder="">
-    <mat-error *ngIf="personaForm.controls.ageCtrl.errors?.isMinor && personaForm.controls.ageCtrl.dirty">
+    <input matInput type="number" min="18" formControlName="ageCtrl" placeholder="">
+    <mat-error *ngIf="personaForm.controls.ageCtrl.errors?.min && personaForm.controls.ageCtrl.dirty">
       Debe ser mayor a 18 años
     </mat-error>
   </mat-form-field>

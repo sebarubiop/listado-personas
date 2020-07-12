@@ -53,7 +53,9 @@ export class AdminPersonaFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(60),
       ])],
-      ageCtrl: [data?.age],
+      ageCtrl: [data?.age, Validators.compose([
+        Validators.min(18),
+      ])],
       addressCtrl: [data?.address, Validators.compose([
         Validators.required,
         Validators.maxLength(400),
@@ -87,7 +89,7 @@ export class AdminPersonaFormComponent implements OnInit {
         response = await this.personasService.updatePersona(this.persona._id, personaData).toPromise()
       if(response?.success) {
         this.processing = false
-        this.router.navigate(["/"], { queryParams: { s: true } })
+        this.router.navigate(["/"])
       } else {
         this.processing = false
         this.isError = true
