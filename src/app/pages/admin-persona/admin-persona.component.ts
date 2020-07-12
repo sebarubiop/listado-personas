@@ -24,18 +24,22 @@ export class AdminPersonaComponent implements OnInit {
     private personasService: PersonasService,
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id")
     const urlArray = this.router.url.substr(1).split('/')
     this.isAdd = urlArray[0].includes('add')
     this.isEdit = urlArray[0].includes('edit')
     if (this.id && this.isEdit) {
-      const response = await this.personasService.getSinglePersona(this.id).toPromise()
-      if(response.success){
-        this.persona = response.value
-      } else {
-        this.isError = true
-      }
+      this.getPersonas()
+    }
+  }
+
+  private async getPersonas() {
+    const response = await this.personasService.getSinglePersona(this.id).toPromise()
+    if(response.success){
+      this.persona = response.value
+    } else {
+      this.isError = true
     }
   }
 

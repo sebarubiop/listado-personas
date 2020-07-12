@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
-import { Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
+
 import { Persona } from 'src/app/interfaces/persona';
 import { ValidRut } from './customvalidator.validator'
+import { PersonasService, PersonaResponse } from 'src/app/services/personas.service';
 
 @Component({
   selector: 'app-admin-persona-form',
@@ -25,6 +27,7 @@ export class AdminPersonaFormComponent implements OnInit {
     private router: Router,
     private _location: Location,
     private formBuilder: FormBuilder,
+    private personasService: PersonasService,
   ) {
 
   }
@@ -55,7 +58,6 @@ export class AdminPersonaFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(400),
       ])],
-
     },
     {
       validator: ValidRut("rutCtrl")
@@ -66,12 +68,34 @@ export class AdminPersonaFormComponent implements OnInit {
     this._location.back();
   }
 
-  submitPersona() {
-    console.log()
+  async submitPersona() {
+    const personaData = {
+      rut: this.personaForm.value.rutCtrl,
+      name: this.personaForm.value.nameCtrl,
+      last_name: this.personaForm.value.lastnameCtrl,
+      age: this.personaForm.value.ageCtrl,
+      address: this.personaForm.value.addressCtrl
+    }
+    // console.log(personaData)
     this.processing = true
-    setTimeout(() => {
-      this.router.navigate(["/"])
-    }, 2000)
+
+    try {
+      let response: PersonaResponse
+      if(this.isAdd)
+        response = await this.personasService.addPersona(personaData).toPromise()
+      if(this.isEdit)
+        response = await this.personasService.updatePersona(this.persona._id, personaData).toPromise()
+      if(response?.success) {
+        this.processing = false
+        this.router.navigate(["/"], { queryParams: { s: true } })
+      } else {
+        this.processing = false
+        this.isError = true
+      }
+    }catch(e) {
+      this.processing = false
+      this.isError = true
+    }
   }
 
 }

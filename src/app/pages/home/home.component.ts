@@ -40,12 +40,18 @@ export class HomeComponent implements OnInit {
   }
 
   editPersona(persona: Persona) {
-    console.log(persona)
     this.router.navigate(['/edit', persona._id])
   }
 
-  deletePersona(persona: Persona) {
-    console.log(persona)
+  async deletePersona(persona: Persona) {
+    const response = await this.personasService.deletePersona(persona._id).toPromise()
+    if (response.success) {
+      // console.log(response.value)
+      this.personas = this.personas.filter(p => p._id !== response.value._id)
+    } else {
+      this.isError = true
+      console.log(response.message)
+    }
   }
 
 }

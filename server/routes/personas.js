@@ -97,7 +97,7 @@ router.delete('/:id', async (req, res) => {
     if (persona) {
       const deleteRes = await Persona.deleteOne({ _id: req.params.id })
       if (deleteRes)
-        res.json({ success: true, message: `Persona eliminada: ${persona.name} ${persona.last_name}, id: ${persona._id}` });
+        res.json({ success: true, message: `Persona eliminada: ${persona.name} ${persona.last_name}, id: ${persona._id}`, value: persona });
       else
         res.json({ success: false, message: 'NO se pudo eliminar persona' });
     } else
